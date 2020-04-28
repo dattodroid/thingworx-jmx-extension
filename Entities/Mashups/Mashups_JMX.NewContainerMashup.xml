@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ build="b70"
+ majorVersion="8"
+ minorVersion="4"
+ modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
+ revision="7"
+ schemaVersion="1042"
+ universal="password">
+    <Mashups>
+        <Mashup
+         aspect.isResponsive="true"
+         aspect.mashupType="mashup"
+         columns="0.0"
+         description=""
+         documentationContent=""
+         homeMashup=""
+         lastModifiedDate="2020-04-21T06:46:56.480Z"
+         name="JMX.NewContainerMashup"
+         projectName="JMXExtension"
+         rows="0.0"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <ParameterDefinitions></ParameterDefinitions>
+            <Things>
+                <Thing>JMX.LocalServer</Thing>
+            </Things>
+            <ThingShapes></ThingShapes>
+            <ThingTemplates></ThingTemplates>
+            <mashupContent>
+            <![CDATA[
+            {
+              "CustomMashupCss" : "",
+              "Data" : {
+                "Session" : {
+                  "DataName" : "Session",
+                  "EntityName" : "",
+                  "EntityType" : "Session",
+                  "Id" : "session",
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "SessionInterface",
+                    "Name" : "GetGlobalSessionValues",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "GetGlobalSessionValues"
+                  } ]
+                },
+                "Things_JMX.LocalServer" : {
+                  "DataName" : "Things_JMX.LocalServer",
+                  "EntityName" : "JMX.LocalServer",
+                  "EntityType" : "Things",
+                  "Id" : "f3f9e332-05fe-4a84-b093-c8a7844ff8a1",
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "558036b5-4b90-495f-83cc-556b6c2d350e",
+                    "Name" : "CreateMBeanContainer",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "CreateMBeanContainer"
+                  } ]
+                },
+                "UserExtensions" : {
+                  "DataName" : "UserExtensions",
+                  "EntityName" : "",
+                  "EntityType" : "UserExtensions",
+                  "Id" : "UserExtensions",
+                  "Services" : [ {
+                    "APIMethod" : "post",
+                    "Characteristic" : "Services",
+                    "Id" : "UserExtensionInterface",
+                    "Name" : "GetCurrentUserExtensionProperties",
+                    "Parameters" : { },
+                    "RefreshInterval" : 0,
+                    "Target" : "GetCurrentUserExtensionProperties"
+                  } ]
+                }
+              },
+              "DataBindings" : [ {
+                "Id" : "d51787fd-23f2-414b-98b9-bff3d8247cf6",
+                "PropertyMaps" : [ {
+                  "SourceProperty" : "Text",
+                  "SourcePropertyBaseType" : "STRING",
+                  "TargetProperty" : "containerName",
+                  "TargetPropertyBaseType" : "STRING",
+                  "TargetPropertyType" : "Parameter"
+                } ],
+                "SourceArea" : "UI",
+                "SourceId" : "textbox-3",
+                "SourceSection" : "",
+                "TargetArea" : "Data",
+                "TargetId" : "CreateMBeanContainer",
+                "TargetSection" : "Things_JMX.LocalServer"
+              } ],
+              "DesignTimePermissions" : {
+                "Create" : [ ],
+                "Delete" : [ ],
+                "Metadata" : [ ],
+                "Read" : [ ],
+                "Update" : [ ]
+              },
+              "Events" : [ {
+                "EventHandlerArea" : "Data",
+                "EventHandlerId" : "Things_JMX.LocalServer",
+                "EventHandlerService" : "CreateMBeanContainer",
+                "EventTriggerArea" : "UI",
+                "EventTriggerEvent" : "Clicked",
+                "EventTriggerId" : "button-4",
+                "EventTriggerSection" : "",
+                "Id" : "ba7e3e5d-6aa8-42a9-93c5-8557e6d6d267"
+              }, {
+                "EventHandlerArea" : "Mashup",
+                "EventHandlerId" : "mashup-root",
+                "EventHandlerService" : "CloseIfPopup",
+                "EventTriggerArea" : "Data",
+                "EventTriggerEvent" : "ServiceInvokeCompleted",
+                "EventTriggerId" : "CreateMBeanContainer",
+                "EventTriggerSection" : "Things_JMX.LocalServer",
+                "Id" : "a0abb35d-1a9e-4c25-9228-9584d37752ef"
+              } ],
+              "RunTimePermissions" : {
+                "permissions" : [ ]
+              },
+              "UI" : {
+                "Properties" : {
+                  "AddToDashboardButton" : "SimplePlus",
+                  "AddToDashboardButtonStyle" : "DefaultAddToDashboardButtonStyle",
+                  "Area" : "Mashup",
+                  "BGImage" : "",
+                  "BGImageRepeat" : "no-repeat",
+                  "BGImageSize" : "auto",
+                  "Columns" : 0,
+                  "ConfigureGadgetButton" : "SimpleGear",
+                  "ConfigureGadgetButtonStyle" : "DefaultConfigureGadgetButtonStyle",
+                  "DisplayName" : "Mashup",
+                  "EnableParameterEditing" : false,
+                  "Height" : 618,
+                  "Id" : "mashup-root",
+                  "IgnoreWarningsInViewMashup" : false,
+                  "IsPrintLayout" : false,
+                  "Left" : 0,
+                  "MashupToEditGadget" : "DefaultMashupToEditGadget",
+                  "MinHeight" : 0,
+                  "MinWidth" : 0,
+                  "ResponsiveLayout" : true,
+                  "Rows" : 0,
+                  "ShowDataLoading" : true,
+                  "Style" : "DefaultMashupStyle",
+                  "StyleTheme" : "Base Theme",
+                  "Title" : "",
+                  "TitleBar" : false,
+                  "TitleBarStyle" : "DefaultTitleBarStyle",
+                  "TitleBarText" : "Gadget Title Here",
+                  "Top" : 0,
+                  "Type" : "mashup",
+                  "UseTheme" : false,
+                  "UseThemeForHybrids" : false,
+                  "Visible" : true,
+                  "Width" : 1024,
+                  "Z-index" : 10,
+                  "__TypeDisplayName" : "Mashup",
+                  "id_index" : 4,
+                  "supportsAutoResize" : true
+                },
+                "Widgets" : [ {
+                  "Properties" : {
+                    "Area" : "UI",
+                    "DisplayName" : "panel-2",
+                    "Height" : 200,
+                    "HideScrollbars" : false,
+                    "HorizontalAnchor" : "left",
+                    "Id" : "panel-2",
+                    "Left" : 85,
+                    "ResponsiveLayout" : true,
+                    "ShowDataLoading" : true,
+                    "Style" : "DefaultPanelStyle",
+                    "Top" : 55,
+                    "Type" : "panel",
+                    "VerticalAnchor" : "top",
+                    "Visible" : true,
+                    "Width" : 300,
+                    "Z-index" : 10,
+                    "__TypeDisplayName" : "Panel"
+                  },
+                  "Widgets" : [ {
+                    "Properties" : {
+                      "Area" : "UI",
+                      "CursorPosition" : 0,
+                      "DefaultTextboxFocusStyle" : "DefaultFocusStyle",
+                      "DisplayName" : "textbox-3",
+                      "Height" : 24,
+                      "Id" : "textbox-3",
+                      "InnerShadow" : true,
+                      "Label" : "Container Name",
+                      "LabelAlignment" : "left",
+                      "Left" : 40,
+                      "MaskInputCharacters" : false,
+                      "PlaceholderText" : "",
+                      "ReadOnly" : false,
+                      "ResponsiveLayout" : false,
+                      "ShowDataLoading" : true,
+                      "Style" : "DefaultTextBoxStyle",
+                      "TabSequence" : 0,
+                      "Text" : "",
+                      "TextAlign" : "left",
+                      "TextboxLabelStyle" : "DefaultWidgetLabelStyle",
+                      "ToolTipField" : "",
+                      "ToolTipStyle" : "DefaultTooltipStyle",
+                      "Top" : 40,
+                      "Type" : "textbox",
+                      "Visible" : true,
+                      "Width" : 280,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "TextBox",
+                      "__supportsLabel" : true,
+                      "__supportsTooltip" : true
+                    },
+                    "Widgets" : [ ]
+                  }, {
+                    "Properties" : {
+                      "ActiveStyle" : "DefaultButtonActiveStyle",
+                      "Area" : "UI",
+                      "CancelConfirmationButton" : "button2",
+                      "ConfirmationButton1Label" : "Yes",
+                      "ConfirmationButton2Label" : "No",
+                      "ConfirmationPrompt" : "Do Action?",
+                      "ConfirmationRequired" : false,
+                      "ConfirmationTitle" : "Confirm Action",
+                      "ContextId" : "",
+                      "DefaultConfirmationButton" : "button1",
+                      "Disabled" : false,
+                      "DisabledStyle" : "DefaultButtonDisabledStyle",
+                      "DisplayName" : "button-4",
+                      "FocusStyle" : "DefaultButtonFocusStyle",
+                      "Height" : 30,
+                      "HoverStyle" : "DefaultButtonHoverStyle",
+                      "IconAlignment" : "left",
+                      "Id" : "button-4",
+                      "Label" : "Create",
+                      "Left" : 245,
+                      "ResponsiveLayout" : false,
+                      "RoundedCorners" : true,
+                      "ShowDataLoading" : true,
+                      "SingleClickSelectOnTablets" : true,
+                      "Style" : "DefaultButtonStyle",
+                      "TabSequence" : 0,
+                      "ToolTipField" : "",
+                      "ToolTipStyle" : "DefaultTooltipStyle",
+                      "Top" : 120,
+                      "Type" : "button",
+                      "Visible" : true,
+                      "Width" : 75,
+                      "Z-index" : 10,
+                      "__TypeDisplayName" : "Button",
+                      "__supportsTooltip" : true
+                    },
+                    "Widgets" : [ ]
+                  } ]
+                } ]
+              },
+              "mashupType" : "mashup"
+            }
+            ]]>
+            </mashupContent>
+            <preview></preview>
+        </Mashup>
+    </Mashups>
+</Entities>

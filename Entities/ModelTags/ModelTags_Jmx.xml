@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ build="b70"
+ majorVersion="8"
+ minorVersion="4"
+ modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
+ revision="7"
+ schemaVersion="1042"
+ universal="password">
+    <ModelTags>
+        <ModelTagVocabulary
+         description=""
+         documentationContent=""
+         homeMashup=""
+         isDynamic="false"
+         lastModifiedDate="2020-04-21T10:57:28.831Z"
+         name="Jmx"
+         projectName="JMXExtension"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <VocabularyTerm
+             description=""
+             name="Container"></VocabularyTerm>
+        </ModelTagVocabulary>
+    </ModelTags>
+</Entities>

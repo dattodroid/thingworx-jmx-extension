@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities
+ build="b70"
+ majorVersion="8"
+ minorVersion="4"
+ modelPersistenceProviderPackage="PostgresPersistenceProviderPackage"
+ revision="7"
+ schemaVersion="1042"
+ universal="password">
+    <DataShapes>
+        <DataShape
+         baseDataShape=""
+         description="MBeanContainer list"
+         documentationContent=""
+         homeMashup=""
+         lastModifiedDate="2020-04-21T08:49:54.861Z"
+         name="JMX.MBeanContainerList"
+         projectName="JMXExtension"
+         tags="">
+            <avatar></avatar>
+            <DesignTimePermissions>
+                <Create></Create>
+                <Read></Read>
+                <Update></Update>
+                <Delete></Delete>
+                <Metadata></Metadata>
+            </DesignTimePermissions>
+            <RunTimePermissions></RunTimePermissions>
+            <VisibilityPermissions>
+                <Visibility></Visibility>
+            </VisibilityPermissions>
+            <ConfigurationTableDefinitions></ConfigurationTableDefinitions>
+            <ConfigurationTables></ConfigurationTables>
+            <FieldDefinitions>
+                <FieldDefinition
+                 baseType="IMAGELINK"
+                 description="Avatar image"
+                 name="avatar"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 baseType="STRING"
+                 description="Entity description"
+                 name="description"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 baseType="MASHUPNAME"
+                 description="Home mashup"
+                 name="homeMashup"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 baseType="BOOLEAN"
+                 description="Indicates if a system object or not"
+                 name="isSystemObject"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="true"
+                 baseType="STRING"
+                 description="Entity name"
+                 name="name"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 aspect.tagType="ModelTags"
+                 baseType="TAGS"
+                 description="Tags"
+                 name="tags"
+                 ordinal="0"></FieldDefinition>
+                <FieldDefinition
+                 aspect.isPrimaryKey="false"
+                 baseType="HYPERLINK"
+                 description=""
+                 name="viewLink"
+                 ordinal="1"></FieldDefinition>
+            </FieldDefinitions>
+        </DataShape>
+    </DataShapes>
+</Entities>
