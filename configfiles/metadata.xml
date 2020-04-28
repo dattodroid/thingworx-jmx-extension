@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Entities>
     <ExtensionPackages>
-        <ExtensionPackage dependsOn="" description="JMX Extensions" minimumThingWorxVersion="8.3.0" name="JMXExtension" packageVersion="1.0.0" vendor="sma">
+        <ExtensionPackage dependsOn="" description="JMX Monitoring Extensions" minimumThingWorxVersion="8.3.0" name="JMXMonitor" packageVersion="1.0.0" vendor="sma">
             <JarResources>
                 <FileResource description="" file="thingworx-jmx-extension.jar" type="JAR"/>
             </JarResources>
