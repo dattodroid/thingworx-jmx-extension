@@ -22,6 +22,7 @@ import com.thingworx.metadata.annotations.ThingworxBaseTemplateDefinition;
 import com.thingworx.metadata.annotations.ThingworxServiceDefinition;
 import com.thingworx.metadata.annotations.ThingworxServiceParameter;
 import com.thingworx.metadata.annotations.ThingworxServiceResult;
+import com.thingworx.system.ContextType;
 import com.thingworx.things.Thing;
 import com.thingworx.types.BaseTypes;
 import com.thingworx.types.InfoTable;
@@ -49,11 +50,11 @@ public class JMXServerTemplate extends Thing {
 	}
 
 	@Override
-	public void initializeThing() throws Exception {
-		if (_c3p0PoolName == null) {
+	public void initializeThing(ContextType contextType) throws Exception {
+//		if (_c3p0PoolName == null) {
 			_c3p0PoolName = getC3p0PoolMBeanName();
-		}
-		super.initializeThing();
+//		}
+		super.initializeThing(contextType);
 	}
 
 	private String getC3p0PoolMBeanName() throws Exception {
