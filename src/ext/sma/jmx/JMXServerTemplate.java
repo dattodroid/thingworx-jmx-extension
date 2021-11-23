@@ -39,7 +39,7 @@ public class JMXServerTemplate extends Thing {
 	static final String C3P0_ROOT = "com.mchange.v2.c3p0:type=PooledDataSource,";
 	static final String THINGNAME_MACRO = "_THINGNAME_";
 	static final String COMPOSITE_SEP = "_";
-	
+
 	static final String THING_URL_TEMPLATE = "/Thingworx/Composer/index.html#/modeler/details/Thing~_THINGNAME_/properties";
 
 	private String _c3p0PoolName = null;
@@ -49,22 +49,17 @@ public class JMXServerTemplate extends Thing {
 	public JMXServerTemplate() {
 	}
 
-	@Override
-	public void initializeThing(ContextType contextType) throws Exception {
-//		if (_c3p0PoolName == null) {
-			_c3p0PoolName = getC3p0PoolMBeanName();
-//		}
-		super.initializeThing(contextType);
-	}
-
 	private String getC3p0PoolMBeanName() throws Exception {
-		ObjectName oname = null;
-		final MBeanServer mbs = getMBeanServer();
-		final Set<ObjectName> onames = mbs.queryNames(new ObjectName(C3P0_ROOT + "*"), null);
-		if (!onames.isEmpty()) {
-			oname = onames.iterator().next();
+		if (_c3p0PoolName == null) {
+			ObjectName oname = null;
+			final MBeanServer mbs = getMBeanServer();
+			final Set<ObjectName> onames = mbs.queryNames(new ObjectName(C3P0_ROOT + "*"), null);
+			if (!onames.isEmpty()) {
+				oname = onames.iterator().next();
+			}
+			_c3p0PoolName = oname.toString();
 		}
-		return oname.toString();
+		return _c3p0PoolName;
 	}
 
 	private static MBeanServer getMBeanServer() {
@@ -102,7 +97,8 @@ public class JMXServerTemplate extends Thing {
 		return BaseTypes.STRING;
 	}
 
-	void pushMBeanAttributes(JMXMBeanContainerTemplate container, List<PropertyDefinition> properties) throws Exception {
+	void pushMBeanAttributes(JMXMBeanContainerTemplate container, List<PropertyDefinition> properties)
+			throws Exception {
 
 		if (container == null || properties == null)
 			return;
@@ -119,14 +115,13 @@ public class JMXServerTemplate extends Thing {
 			final BaseTypes type = prop.getBaseType();
 
 			if (C3P0_MACRO.equals(obj_name)) {
-				if (_c3p0PoolName != null) {
-					obj_name = _c3p0PoolName;
-				} else {
+				obj_name = getC3p0PoolMBeanName();
+				if (obj_name == null) {
 					_logger.warn("Could not resolve {} macro.", C3P0_MACRO);
 					continue;
 				}
 			}
-			
+
 			String comp_key = null;
 			String attr_name = null;
 			int t = name.lastIndexOf(COMPOSITE_SEP);
@@ -149,9 +144,10 @@ public class JMXServerTemplate extends Thing {
 				values.put("time", new DatetimePrimitive(now));
 				values.put("value", BaseTypes.ConvertToPrimitive(attr_value, type));
 				vtqs.addRow(values);
-				
+
 			} catch (Exception ex) {
-				_logger.warn("Error pushing MBean attribute {} / {} onto {} because {}.", obj_name, name, container.getName(), ex.getMessage());
+				_logger.warn("Error pushing MBean attribute {} / {} onto {} because {}.", obj_name, name,
+						container.getName(), ex.getMessage());
 				continue;
 			}
 		}
@@ -222,17 +218,16 @@ public class JMXServerTemplate extends Thing {
 			if (notWritableOnly && is_writable) {
 				continue;
 			}
-			
+
 			boolean isComposite = false;
 			final String type = attr_info.getType();
 			if ("javax.management.openmbean.CompositeData".equals(type)) {
 				Object attr_value = null;
 				try {
 					attr_value = mbs.getAttribute(oname, attr_info.getName());
+				} catch (Exception ex) {
 				}
-				catch (Exception ex) {
-				}
-				
+
 				if (attr_value != null) {
 					CompositeData cd = (CompositeData) attr_value;
 					CompositeType ct = cd.getCompositeType();
@@ -245,17 +240,16 @@ public class JMXServerTemplate extends Thing {
 						values.put("description", new StringPrimitive(ct.getDescription()));
 						values.put("isWritable", new BooleanPrimitive(is_writable));
 						values.put("objectName", new StringPrimitive(mbeanName));
-						if (showPreview) {	
+						if (showPreview) {
 							values.put("preview", new StringPrimitive(value.toString()));
 						}
 						it.addRow(values);
 					}
 					isComposite = true;
-				}
-				else {
+				} else {
 					isComposite = false;
 				}
-					 
+
 			}
 			if (isComposite == false) {
 				final ValueCollection values = new ValueCollection();
@@ -264,13 +258,12 @@ public class JMXServerTemplate extends Thing {
 				values.put("description", new StringPrimitive(attr_info.getDescription()));
 				values.put("isWritable", new BooleanPrimitive(is_writable));
 				values.put("objectName", new StringPrimitive(mbeanName));
-	
+
 				if (showPreview) {
 					Object attr_value = null;
 					try {
 						attr_value = mbs.getAttribute(oname, attr_info.getName());
-					}
-					catch (Exception ex) {
+					} catch (Exception ex) {
 						attr_value = "[ERROR] - " + ex.getMessage();
 					}
 					if (attr_value != null) {
@@ -282,7 +275,6 @@ public class JMXServerTemplate extends Thing {
 		}
 		return it;
 	}
-	
 
 	@ThingworxServiceDefinition(name = "CreateMBeanContainer", description = "", category = "Jmx:mashup", isAllowOverride = false, aspects = {
 			"isAsync:false" })
@@ -373,4 +365,15 @@ public class JMXServerTemplate extends Thing {
 		JMXMBeanContainerTemplate container = getContainerByName(containerName);
 		return container.GetMBeanPropertyDefinitions();
 	}
+
+	@ThingworxServiceDefinition(name = "ResetC3p0Bean", description = "", category = "", isAllowOverride = false, aspects = {
+			"isAsync:false" })
+	@ThingworxServiceResult(name = "Result", description = "", baseType = "STRING", aspects = {})
+	public String ResetC3p0Bean() throws Exception {
+		_logger.trace("Entering Service: ResetC3p0Bean");
+		_c3p0PoolName = null;
+		_logger.trace("Exiting Service: ResetC3p0Bean");
+		return this.getC3p0PoolMBeanName();
+	}
+	
 }
