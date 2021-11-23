@@ -366,7 +366,7 @@ public class JMXServerTemplate extends Thing {
 		return container.GetMBeanPropertyDefinitions();
 	}
 
-	@ThingworxServiceDefinition(name = "ResetC3p0Bean", description = "", category = "", isAllowOverride = false, aspects = {
+	@ThingworxServiceDefinition(name = "ResetC3p0Bean", description = "", category = "Jmx", isAllowOverride = false, aspects = {
 			"isAsync:false" })
 	@ThingworxServiceResult(name = "Result", description = "", baseType = "STRING", aspects = {})
 	public String ResetC3p0Bean() throws Exception {
