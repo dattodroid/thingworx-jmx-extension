@@ -1,5 +1,5 @@
 > [!CAUTION]
-> This extension was created for educational purposes and has undergone no testing. It is neither supported nor endorsed by PTC
+> This extension was created for educational purposes and has undergone no testing. It is neither supported nor endorsed by PTC.
 
 ## Features
 
