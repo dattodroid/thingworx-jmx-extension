@@ -27,7 +27,7 @@
 
 ![Slide2](https://github.com/dattodroid/thingworx-jmx-extension/assets/159778604/56200a48-8755-452c-b1bf-0716dcaf6232)
 
-## (Optional) JMXDemo_Entities.xml
+## (Optional) Demo/JMXDemo_Entities.xml
 
 - Sample MBeans container Things:
   - `jmx.OS` - OperationSystem metrics: free memory and CPU usages...
